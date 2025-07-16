@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #6b98da;
+  color: white;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.input-container {
+  background-color: #2c2c2c;
+  border-radius: 20px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.input-container input {
+  background: transparent;
+  border: none;
+  color: white;
+  width: 100%;
+  outline: none;
+}
+
+.input-container input::placeholder {
+  color: #aaa;
+}
+
+.input-container i {
+  color: white;
+  margin-right: 0.75rem;
+  cursor: pointer;
+}
+
+.icon-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.swal2-container {
+  z-index: 99999 !important;
+}

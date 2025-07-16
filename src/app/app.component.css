@@ -1,0 +1,10 @@
+.background {
+  height: 100vh;
+  width: 100vw;
+  background-color: #6b98da;
+
+  display: flex;
+  justify-content: center; /* centra horizontal */
+  align-items: center;     /* centra vertical */
+  flex-direction: column;  /* opcional, si quieres que se apilen verticalmente */
+}

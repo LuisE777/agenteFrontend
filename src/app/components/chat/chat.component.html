@@ -1,0 +1,169 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+  <div class="container">
+    <!-- Botón Volver (lado izquierdo) -->
+    <div class="navbar-brand">
+      <button
+        *ngIf="topicSelected?.id && subTopicSelected == null"
+        class="btn btn-outline-primary btn-sm d-flex align-items-center"
+        (click)="return()"
+        type="button">
+        <i class="bi bi-arrow-left me-2"></i>
+        <span class="d-none d-sm-inline">Volver</span>
+      </button>
+
+      <button
+        *ngIf="subTopicSelected?.id"
+        class="btn btn-outline-primary btn-sm d-flex align-items-center"
+        (click)="returnTopic()"
+        type="button">
+        <i class="bi bi-arrow-left me-2"></i>
+        <span class="d-none d-sm-inline">Volver</span>
+      </button>
+    </div>
+
+    <!-- Título central -->
+    <div class="navbar-text mx-auto d-none d-md-block">
+      <strong>Contabilidad 3 - Tutor Virtual</strong>
+    </div>
+
+    <!-- Botón Menú Principal (lado derecho) -->
+    <div class="navbar-nav">
+      <button
+        *ngIf="topicSelected == null"
+        class="btn btn-outline-secondary btn-sm d-flex align-items-center"
+        (click)="menu()"
+        type="button">
+        <i class="bi bi-house me-2"></i>
+        <span class="d-none d-sm-inline">Menú Principal</span>
+      </button>
+
+      <button
+        *ngIf="topicSelected?.id"
+        class="btn btn-outline-secondary btn-sm d-flex align-items-center"
+        (click)="menu()"
+        type="button">
+        <i class="bi bi-house me-2"></i>
+        <span class="d-none d-sm-inline">Inicio</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8 w-100">
+<!--
+      <div class="d-flex flex-column align-items-center" *ngIf="topicSelected ==null">
+        <button class="btn-volver" (click)="menu()" type="button" class="btn btn-secondary">Menú Principal</button>
+        <br>
+      </div>
+
+
+      <div class="d-flex flex-column align-items-center" *ngIf="topicSelected?.id && subTopicSelected ==null">
+        <button class="btn-volver" (click)="return()" type="button" class="btn btn-secondary">Volver</button>
+        <br>
+      </div> -->
+
+
+      <div *ngIf="topicSelected == null" class="text-start">
+        <p><b>HOLA ESTOY AQUI PARA AYUDARTE A DOMINAR LOS CONCEPTOS DE CONTABILIDAD 3 !!! 😀</b></p>
+        <p>¿Qué tema quieres explorar hoy? 💡</p>
+        <ul>
+          <li class="highlight mb-2" *ngFor="let topic of topics" (click)="topicSelection(topic)">
+            <h6>{{topic.name}}</h6>
+            <span class="spanPesonality">{{topic.description}}</span>
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="topicSelected?.id && subTopicSelected ==null ">
+        <h3 class="centered"><b>{{topicSelected.name | uppercase}}</b></h3>
+        <h4 class="centered"><b>MUY BUENA ELECCIÓN !!! 😀</b></h4>
+        <p class="centered"><b>PARA AYUDARTE MEJOR ESTE TEMA SE ENCUENTRA DIVIDIDO EN LOS SIGUIENTES SUBTEMAS:</b></p>
+        <br>
+        <ul>
+          <li class="highlight mb-2" *ngFor="let subtopic of topicSelected.subtopics" (click)="subTopicSelection(subtopic)">
+            <h6>{{subtopic.name}}</h6>
+            <span class="spanPesonality">{{subtopic.description}}</span>
+          </li>
+        </ul>
+      </div>
+
+
+
+    <div *ngIf="subTopicSelected?.id">
+      <!-- <div class="d-flex flex-column align-items-center" *ngIf="subTopicSelected?.id">
+        <button class="btn-volver" (click)="returnTopic()" type="button" class="btn btn-secondary">Volver</button>
+        <br>
+      </div> -->
+
+      <h4 class="centered"><b>{{subTopicSelected.name | uppercase}}</b></h4>
+
+      <span style="display: block; width: 50%; margin: 0 auto;">
+        <em>"{{subTopicSelected.descriptionComplete}}"</em>
+      </span>
+
+<!--
+
+
+      <div class="d-flex flex-column align-items-center">
+
+        <div *ngFor="let message of messages">
+          <div class="text-end" *ngIf="message.tipo == 'usuario'">
+            <span class="chat-message user"> {{ message.texto }}📚</span>
+          </div>
+          <div class="text-start" *ngIf="message.tipo == 'bot'">
+            <span class="chat-message bot">🤖 {{ message.texto }}</span>
+          </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div *ngIf="loading" class="loading">
+          <i class="fa fa-spinner fa-spin"></i> Generando respuesta...
+        </div>
+
+        <div class="input-container">
+          <i class="bi bi-plus-lg"></i>
+          <input type="text" [(ngModel)]="message" placeholder="Pregunta lo que quieras" (keydown.enter)="sendMessage()" />
+        </div>
+      </div> -->
+      <!-- chat.component.html -->
+<div class="chat-container">
+  <div *ngFor="let message of messages">
+    <!-- Usuario -->
+    <div class="message-wrapper text-end" *ngIf="message.tipo === 'usuario'">
+      <div class="chat-message user">{{ message.texto }} 📚</div>
+    </div>
+
+    <!-- Bot -->
+    <div class="message-wrapper text-start" *ngIf="message.tipo === 'bot'">
+      <div class="chat-message bot">🤖 {{ message.texto }}</div>
+    </div>
+  </div>
+
+  <!-- Cargando -->
+  <div *ngIf="loading" class="loading">
+    <i class="fa fa-spinner fa-spin text-dark"></i> <span class="text-dark">El tutor esta pensando...</span>
+  </div>
+
+  <!-- Input de message -->
+  <div class="input-container">
+    <i class="bi bi-plus-lg me-2"></i>
+    <input
+      type="text"
+      [(ngModel)]="message"
+      placeholder="Pregunta lo que quieras"
+      (keydown.enter)="sendMessage()" />
+  </div>
+</div>
+
+
+    </div>
+
+
+    </div>
+  </div>
+</div>

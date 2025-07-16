@@ -1,0 +1,129 @@
+.loading {
+  font-style: italic;
+  color: gray;
+  margin-top: 10px;
+}
+li:hover {
+  cursor: pointer;
+  color: #666769; /* Texto azul al pasar el mouse */
+}
+
+.chat-message {
+  display: inline-block;
+  max-width: 80%;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  padding: 10px;
+  border-radius: 12px;
+  margin: 4px 0;
+}
+
+.user {
+  background-color: #d1e7dd;
+  text-align: right;
+  color:black
+}
+
+.bot {
+  background-color: #f8f9fa;
+  color:black
+}
+.text-start span,
+.text-end span {
+  display: inline-block;
+  max-width: 80%;       /* No más del 80% del ancho del contenedor padre */
+  word-wrap: break-word; /* Rompe las palabras largas si es necesario */
+  white-space: pre-wrap; /* Permite saltos de línea y espacios */
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 12px;
+  background-color: #f1f1f1;
+  line-height: 1.4;
+}
+
+.text-end span {
+  background-color: #d1e7dd; /* Diferente color para el usuario */
+  align-self: flex-end;
+}
+
+
+
+/*chat*/
+
+/* chat.component.css */
+
+.chat-container {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Contenedor individual de cada mensaje */
+.message-wrapper {
+  margin-bottom: 10px;
+}
+
+/* Estilo general de los mensajes */
+.chat-message {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 14px;
+  max-width: 85%;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* Mensaje del usuario */
+.user {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  align-self: flex-end;
+}
+
+/* Mensaje del bot */
+.bot {
+  background-color: #f8f9fa;
+  color: #212529;
+  align-self: flex-start;
+}
+
+/* Alineaciones */
+.text-start {
+  text-align: left;
+}
+
+.text-end {
+  text-align: right;
+}
+
+/* Input de mensaje */
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.input-container input {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+/* Indicador de carga */
+.loading {
+  font-style: italic;
+  color: gray;
+  margin-top: 15px;
+  text-align: center;
+}
+
