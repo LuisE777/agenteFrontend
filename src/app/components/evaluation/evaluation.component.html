@@ -54,7 +54,7 @@
         </ul>
       </div>
 
-      <div class="chat-container">
+      <div class="chat-container" *ngIf="topic">
         <div *ngFor="let message of messages">
           <!-- Usuario -->
           <div class="message-wrapper text-end" *ngIf="message.tipo === 'usuario'">
@@ -78,7 +78,7 @@
           <input
             type="text"
             [(ngModel)]="message"
-            placeholder="Pregunta lo que quieras"
+            placeholder="Escribe"
             (keydown.enter)="sendMessage()" />
         </div>
       </div>
