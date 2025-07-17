@@ -40,8 +40,9 @@ export class SimulationComponent {
       try {
         await this.question();
         this.loading = false;
-      } catch (e) {
-        Swal.fire('Error', 'Ocurrió un problema al obtener la respuesta. '+e, 'error');
+      } catch (e:any) {
+        console.log(e)
+        Swal.fire('Error', 'Ocurrió un problema al obtener la respuesta. '+(e || e.message) , 'error');
         this.loading = false;
         return;
       }
