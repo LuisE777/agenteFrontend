@@ -136,7 +136,12 @@ export class EvaluationComponent implements OnInit  {
       await this.evaluation(`RESPUESTA USUARIO ${this.message}, CORREGILE SI ESTA MAL, OJO COSIDERA EL INCISO QUE TE ESTA DICIENDO`);
       this.loading = false;
     } catch (e:any) {
+      if (e.status == 429 ){
+      Swal.fire('Error', 'Demasiadas consultas, espere un momento' , 'error');
+      }else{
+
       Swal.fire('Error', 'Ocurrió un problema al obtener la respuesta. '+(e || e.message) , 'error');
+      }
       return;
     }
   }

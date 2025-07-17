@@ -25,3 +25,7 @@
 .letter{
   color: black;
 }
+
+body {
+  padding-top: 70px; /* O ajusta al alto real de tu navbar */
+}

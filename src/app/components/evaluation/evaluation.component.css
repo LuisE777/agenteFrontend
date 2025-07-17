@@ -127,3 +127,8 @@ li:hover {
   text-align: center;
 }
 
+
+
+body {
+  padding-top: 70px; /* Ajusta este valor según la altura real de tu navbar */
+}
