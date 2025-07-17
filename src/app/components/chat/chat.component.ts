@@ -179,6 +179,7 @@ export class ChatComponent implements OnInit  {
   async question(){
     try{
       let answer:any = await firstValueFrom(this.croqService.question(this.message));
+      if(answer.error)throw answer.detail
       this.messages.push({texto: answer.message,  tipo: 'bot' });
       this.message = '';
     }catch(e){
@@ -193,8 +194,8 @@ export class ChatComponent implements OnInit  {
       try {
         await this.question();
         this.loading = false;
-      } catch (e) {
-        Swal.fire('Error', 'Ocurrió un problema al obtener la respuesta.', 'error');
+      } catch (e:any) {
+        Swal.fire('Error', 'Ocurrió un problema al obtener la respuesta. '+ e?.message, 'error');
         return;
       }
   }

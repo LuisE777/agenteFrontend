@@ -26,6 +26,7 @@ export class SimulationComponent {
   async question(){
     try{
       let answer:any = await firstValueFrom(this.croqService.opening(this.message,this.process));
+      if(answer.error)throw answer.detail
       this.messages.push({texto: answer.message,  tipo: 'bot' });
       this.message = '';
     }catch(e){

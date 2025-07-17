@@ -87,6 +87,7 @@ export class EvaluationComponent implements OnInit  {
     try{
       let answer:any = await firstValueFrom(this.geminiService.question(this.message))
       console.log(answer)
+      if(answer.error)throw answer.detail
       this.messages.push({texto: answer.respuesta.candidates[0].content.parts[0].text,  tipo: 'bot' })
       this.message = '';
 
@@ -119,6 +120,7 @@ export class EvaluationComponent implements OnInit  {
   async evaluation(message:string){
     try{
       let answer:any = await firstValueFrom(this.croqService.evaluation(message, this.messages,this.topic.name,this.topic.numeration));
+      if(answer.error)throw answer.detail
       this.messages.push({texto: answer.message,  tipo: 'bot' });
       this.message = '';
     }catch(e){
@@ -133,8 +135,8 @@ export class EvaluationComponent implements OnInit  {
     try {
       await this.evaluation(`RESPUESTA USUARIO ${this.message}, CORREGILE SI ESTA MAL, OJO COSIDERA EL INCISO QUE TE ESTA DICIENDO`);
       this.loading = false;
-    } catch (e) {
-      Swal.fire('Error', 'Ocurrió un problema al obtener la respuesta.', 'error');
+    } catch (e:any) {
+      Swal.fire('Error', 'Ocurrió un problema al obtener la respuesta. '+(e || e.message) , 'error');
       return;
     }
   }
