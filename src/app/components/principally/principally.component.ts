@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-principally',
   templateUrl: './principally.component.html',
@@ -30,5 +30,23 @@ export class PrincipallyComponent implements OnInit {
   }
   closePopup() {
     this.showPopup = false;
+  }
+  mostrarInformacion1(){
+    Swal.fire({
+      text: 'Esta opción te permite resolver tus dudas acerca de la inscripción de diferentes tipos de sociedades comerciales ante la institución del SEPREC',
+      confirmButtonText: 'Entendido'
+    });
+  }
+  mostrarInformacion2(){
+    Swal.fire({
+      text: 'Esta opción te permite consultar tus dudas acerca de Contabilidad III, obtener ejemplos y recomendaciones de otros temas.',
+      confirmButtonText: 'Entendido'
+    });
+  }
+  mostrarInformacion3(){
+    Swal.fire({
+      text: 'Esta opción te permite repasar los contenidos teóricos de Contabilidad III.',
+      confirmButtonText: 'Entendido'
+    });
   }
 }
